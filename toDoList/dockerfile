@@ -1,0 +1,14 @@
+# Temel bir Java 17 imajı kullanıyoruz (Spring Boot için önerilen sürüm)
+FROM openjdk:17-jdk-slim
+
+# Çalışma dizini oluşturuluyor
+WORKDIR /app
+
+# Proje JAR dosyasını konteynıra kopyala
+COPY target/todolist-0.0.1-SNAPSHOT.jar todolist.jar
+
+# Uygulamanın çalıştırılacağı komut
+ENTRYPOINT ["java", "-jar", "todolist.jar"]
+
+# Container'ın hangi portu dinleyeceğini belirt
+EXPOSE 4444
